@@ -1,0 +1,25 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="clientId" [value]="service.formData.clientId"/>
+    <div class="form-group">
+        <label>CLIENT NAME</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Client Username"
+         name="clientName" #clientName = "ngModel" [(ngModel)]="service.formData.clientName"
+         required [class.invalid]="clientName.invalid &#038;&#038; clientName.touched">
+    </div>
+    <div class="form-group">
+        <label>CLIENT PASSWORD</label>
+        <input type="password" class="form-control form-control-lg" placeholder="Client Password"
+         name="Password" #password = "ngModel" [(ngModel)]="service.formData.password"
+         required maxlength="12" minlength="6" [class.invalid]="password.invalid &#038;&#038; password.touched">
+    </div>
+    <div class="form-group">
+        <label>CLIENT ZONE ID</label>
+        <input type="number" class="form-control form-control-lg" placeholder="Client Zone ID"
+         name="zoneID" #zoneID = "ngModel" [(ngModel)]="service.formData.zoneID"
+         required maxlength="3" minlength="1" [class.invalid]="zoneID.invalid &#038;&#038; zoneID.touched">
+    </div>
+    <input type="hidden" name="deviceToken" [value]="service.formData.deviceToken"/>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>

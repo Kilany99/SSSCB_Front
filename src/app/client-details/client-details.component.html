@@ -1,0 +1,27 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">}Client Detail Register</h1>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <app-client-details-form>
+    <div class="col-md-7">
+        <div>table with list of records from the table</div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Client Username</th>
+                    <th>Password</th>
+                    <th>Zone ID</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr *ngFor="let pd of service.list">
+                <td (click)="populateForm(pd)">{{pd.clientName}}</td>
+                <td (click)="populateForm(pd)">{{pd.password}}</td>
+                <td (click)="populateForm(pd)">{{pd.zoneID}}</td>
+                <td>
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.clientId)"></i>
+                </td>
+            </tr>
+        </table>
+</div>
