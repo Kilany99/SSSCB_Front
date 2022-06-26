@@ -1,0 +1,18 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <div class="form-group">
+        <label>Camera Zone Priority</label>
+        <input class="form-control form-control-lg" placeholder="Camera Zone Priority" name="CameraZonePiority"
+            #zonePriority="ngModel" [(ngModel)]="service.formData.zonePriority"
+            required [class.invalid]="zonePriority.invalid &#038;&#038; zonePriority.touched">
+    </div>
+    <div class="form-group">
+        <label>Zone Description</label>
+        <input class="form-control form-control-lg" placeholder="Zone Description" name="zoneDescription"
+            #zoneDescription="ngModel" [(ngModel)]="service.formData.zoneDescription"
+            required maxlength="16" minlength="1" [class.invalid]="zoneDescription.invalid &#038;&#038; zoneDescription.touched">
+    </div>
+    
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>

@@ -25,6 +25,7 @@ export class ClientDetailsService {
       .toPromise()
       .then(res =>this.list = res as ClientDetails[]);
   }
+  
 
 
 }
