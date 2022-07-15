@@ -9,7 +9,7 @@ export class CamerasDetailsService {
 
   constructor(private http: HttpClient) { }
   formData:CamerasDetails = new CamerasDetails();
-  readonly baseURL = 'https://localhost:5001/api/Clients';
+  readonly baseURL = 'https://localhost:5001/api/Cameras';
   list : CamerasDetails[];
   postCameraDetails() {
     return this.http.post(this.baseURL, this.formData);

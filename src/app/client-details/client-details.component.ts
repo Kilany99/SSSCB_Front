@@ -14,10 +14,14 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.refreshList();
+    this.service.getClientDetails().subscribe(x =>{
+      this.clientList = x;
+    })
   }
   populateForm(selectedRecord:ClientDetails) {
     this.service.formData = Object.assign({}, selectedRecord);
   }
+  clientList: Array<ClientDetails> = [];
   onDelete(CId:number) {
     if (confirm('Are you sure to delete this record ?')) {
       this.service.deleteClientDetails(CId)
@@ -26,6 +30,12 @@ export class ClientDetailsComponent implements OnInit {
         },
         err => { console.log(err); })
     }
+  }
+  editItem(){
+
+  }
+  deleteItem(){
+    
   }
 
 }

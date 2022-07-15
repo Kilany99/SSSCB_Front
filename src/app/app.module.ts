@@ -8,6 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { CamerasDetailsComponent } from './cameras-details/cameras-details.component';
 import { CamerasDetailsFormComponent } from './cameras-details/cameras-details-form/cameras-details-form.component';
+import { NavBarComponent } from './menus/nav-bar/nav-bar.component';
+import { AlertComponent } from './alert/alert.component';
+import {fakeBackendProvider} from 'src/app/_helpers/fake-backend-interceptor'
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from 'src/app/_helpers/error-interceptor';
+import { JwtInterceptor } from 'src/app/_helpers/jwt-interceptor';
+import { RouterModule, Routes } from '@angular/router';
+import {AppRoutingModule} from 'src/app/app-routing-module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,14 +24,26 @@ import { CamerasDetailsFormComponent } from './cameras-details/cameras-details-f
     ClientDetailsFormComponent,
     ClientsListComponent,
     CamerasDetailsComponent,
-    CamerasDetailsFormComponent
+    CamerasDetailsFormComponent,
+    NavBarComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    RouterModule.forRoot([]),
+    AppRoutingModule,
+
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
