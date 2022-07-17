@@ -34,7 +34,7 @@ import {AppRoutingModule} from 'src/app/app-routing-module';
     HttpClientModule,
     RouterModule,
     RouterModule.forRoot([]),
-    AppRoutingModule,
+    AppRoutingModule
 
   ],
   providers: [
